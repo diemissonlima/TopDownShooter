@@ -1,0 +1,202 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://resources/health_bar.tres" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 5, 5 )
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "crawl"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 10, 11 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "death"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 25, 26, 27 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_physics_process"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "hit"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 20, 21, 22 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_physics_process"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "throw"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 30, 31, 32 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walk"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 6 ]
+}
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 5, 5 )
+
+[node name="Soldier" type="KinematicBody2D"]
+
+[node name="Texture" type="Sprite" parent="."]
+hframes = 5
+vframes = 7
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 8 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/crawl = SubResource( 2 )
+anims/death = SubResource( 6 )
+anims/hit = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/throw = SubResource( 7 )
+anims/walk = SubResource( 5 )
+
+[node name="HitboxArea" type="Area2D" parent="."]
+visible = false
+
+[node name="Collision" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource( 9 )
+
+[node name="ProjectileSpawner" type="Position2D" parent="."]
+
+[node name="Light" type="Light2D" parent="."]
+
+[node name="Animation" type="AnimationPlayer" parent="Light"]
+
+[node name="Camera" type="Camera2D" parent="."]
+
+[node name="HealthBar" type="TextureProgress" parent="."]
+margin_left = -6.0
+margin_top = -10.0
+margin_right = 42.0
+margin_bottom = 6.0
+rect_scale = Vector2( 0.25, 0.25 )
+value = 80.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 2 )
+tint_under = Color( 0.2, 0.192157, 0.192157, 1 )
+
+[node name="States" type="Node2D" parent="."]
+
+[node name="Move" type="Node2D" parent="States"]
+
+[node name="Attack" type="Node2D" parent="States"]
+position = Vector2( 53, -7 )
