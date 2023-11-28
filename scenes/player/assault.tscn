@@ -7,3 +7,7 @@
 
 [node name="Texture" parent="." index="0"]
 texture = ExtResource( 2 )
+
+[node name="Move" parent="States" index="0"]
+walk_speed = 30
+crawl_speed = 15

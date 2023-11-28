@@ -1,6 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
+[ext_resource path="res://scripts/player/move.gd" type="Script" id=1]
 [ext_resource path="res://resources/health_bar.tres" type="Texture" id=2]
+[ext_resource path="res://scripts/player/soldier.gd" type="Script" id=3]
+[ext_resource path="res://scripts/player/soldier_texture.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 5, 5 )
@@ -151,10 +154,14 @@ tracks/0/keys = {
 extents = Vector2( 5, 5 )
 
 [node name="Soldier" type="KinematicBody2D"]
+script = ExtResource( 3 )
 
 [node name="Texture" type="Sprite" parent="."]
 hframes = 5
 vframes = 7
+script = ExtResource( 4 )
+parent = NodePath("..")
+animation = NodePath("../Animation")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false
@@ -197,6 +204,8 @@ tint_under = Color( 0.2, 0.192157, 0.192157, 1 )
 [node name="States" type="Node2D" parent="."]
 
 [node name="Move" type="Node2D" parent="States"]
+script = ExtResource( 1 )
+soldier = NodePath("../..")
 
 [node name="Attack" type="Node2D" parent="States"]
 position = Vector2( 53, -7 )
