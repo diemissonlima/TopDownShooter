@@ -72,3 +72,22 @@ func verify_ammo_amount(weapon_type: String) -> void:
 		
 	if weapon_type == "fire" and projectile_amount > projectile_max_amount:
 		projectile_amount = projectile_max_amount
+
+
+func spawn_projectile(type: String) -> void:
+	var projectile_direction: Vector2 = (soldier.get_global_mouse_position() - soldier.global_position).normalized()
+	var projectile = null
+	match type:
+		"fire":
+			projectile = fire_projectile.instance()
+			
+		"throw":
+			pass
+			
+	get_tree().root.call_deferred("add_child", projectile)
+	projectile.global_position = projectile_spawner.global_position
+	# conectar o sinal de camera shake
+	projectile.direction = projectile_direction
+	
+	
+	

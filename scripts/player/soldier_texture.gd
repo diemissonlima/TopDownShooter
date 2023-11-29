@@ -3,9 +3,11 @@ class_name SoldierTexture
 
 var last_direction_state: bool
 var on_action: bool = false
+var spawn_position: float = 6
 
 export(NodePath) onready var parent = get_node(parent) as KinematicBody2D
 export(NodePath) onready var animation = get_node(animation) as AnimationPlayer
+export(NodePath) onready var projectile_spawner = get_node(projectile_spawner) as Position2D
 
 func animate(velocity: Vector2) -> void:
 	flip_h = set_orientation()
@@ -18,11 +20,13 @@ func animate(velocity: Vector2) -> void:
 func set_orientation() -> bool:
 	var mouse_global_position: Vector2 = get_global_mouse_position()
 	if mouse_global_position.x > parent.global_position.x:
+		projectile_spawner.position.x = spawn_position
 		last_direction_state = false
 		
 		return false
 		
 	if mouse_global_position.x < parent.global_position.x:
+		projectile_spawner.position.x = -spawn_position
 		last_direction_state = true
 		
 		return true
