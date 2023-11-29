@@ -38,7 +38,6 @@ tracks/1/keys = {
 
 [node name="Texture" parent="." index="0"]
 texture = ExtResource( 2 )
-projectile_spawner = NodePath("../ProjectileSpawner")
 
 [node name="Animation" parent="." index="2"]
 anims/fire = SubResource( 1 )

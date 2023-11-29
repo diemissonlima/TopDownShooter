@@ -133,6 +133,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 30, 31, 32 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath("States/Attack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "throw" ],
+"method": "spawn_projectile"
+} ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "walk"
@@ -163,6 +177,7 @@ vframes = 7
 script = ExtResource( 4 )
 parent = NodePath("..")
 animation = NodePath("../Animation")
+projectile_spawner = NodePath("../ProjectileSpawner")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false

@@ -1,7 +1,7 @@
 extends Node2D
 class_name AttackState
 
-#const GRENADE: PackedScene = preload("")
+const GRENADE: PackedScene = preload("res://scenes/projectile/grenade.tscn")
 
 onready var weapons_dict: Dictionary = {
 	"throw": "Grenade",
@@ -82,7 +82,7 @@ func spawn_projectile(type: String) -> void:
 			projectile = fire_projectile.instance()
 			
 		"throw":
-			pass
+			projectile = GRENADE.instance()
 			
 	get_tree().root.call_deferred("add_child", projectile)
 	projectile.global_position = projectile_spawner.global_position
@@ -90,4 +90,24 @@ func spawn_projectile(type: String) -> void:
 	projectile.direction = projectile_direction
 	
 	
+func _unhandled_input(event) -> void:
+	if not event is InputEventMouseButton:
+		return
+		
+	var event_as_number: int = event.button_index
+	if event_as_number == 4 and can_change_weapon_index(4):
+		weapon_index += 1
+		
+	if event_as_number == 5 and can_change_weapon_index(5):
+		weapon_index -= 1
+		
+		
+func can_change_weapon_index(index: int) -> bool:
+	if index == 4 and weapon_index == weapons_list.size() - 1:
+		return false
+		
+	if index == 5 and weapon_index == 0:
+		return false
+		
+	return true
 	
