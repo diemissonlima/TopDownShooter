@@ -12,5 +12,5 @@ var is_attacking: bool = false
 func _physics_process(_delta: float) -> void:
 	move_state.move()
 	texture.animate(move_state.velocity)
-	#attack_state.attack()
+	attack_state.attack()
 	
