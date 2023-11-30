@@ -45,6 +45,9 @@ anims/fire = SubResource( 1 )
 [node name="ProjectileSpawner" parent="." index="4"]
 position = Vector2( 0, 1 )
 
+[node name="Camera" parent="." index="6"]
+current = true
+
 [node name="Move" parent="States" index="0"]
 walk_speed = 30
 crawl_speed = 15
