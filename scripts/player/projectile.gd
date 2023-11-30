@@ -18,7 +18,6 @@ func _physics_process(delta: float) -> void:
 	translate(direction * move_speed * delta)
 	
 
-
 func on_screen_exited() -> void:
 	if not already_destroyed:
 		kill()
@@ -32,5 +31,12 @@ func on_body_entered(body) -> void:
 func kill() -> void:
 	emit_signal("camera_shake", shake_lifetime, shake_strenght)
 	already_destroyed = true
-	#spawn_explosion()
+	spawn_explosion()
 	queue_free()
+
+
+func spawn_explosion() -> void:
+	var explosion = explosion_effect.instance()
+	get_tree().root.call_deferred("add_child", explosion)
+	explosion.global_position = global_position
+	

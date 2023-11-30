@@ -28,6 +28,7 @@ export(NodePath) onready var projectile_spawner = get_node(projectile_spawner) a
 
 func _ready() -> void:
 	projectile_amount = projectile_max_amount
+	set_text(weapons_list[weapon_index])
 	
 	
 func attack() -> void:
@@ -100,6 +101,8 @@ func _unhandled_input(event) -> void:
 		
 	if event_as_number == 5 and can_change_weapon_index(5):
 		weapon_index -= 1
+	
+	set_text(weapons_list[weapon_index])
 		
 		
 func can_change_weapon_index(index: int) -> bool:
@@ -111,3 +114,12 @@ func can_change_weapon_index(index: int) -> bool:
 		
 	return true
 	
+
+func set_text(current_weapon: String) -> void:
+	get_tree().call_group("interface", "set_weapon_text", weapons_dict[current_weapon])
+	
+	if current_weapon == "throw":
+		get_tree().call_group("interface", "set_weapon_ammo", grenade_amount, max_grenade_amount)
+		
+	if current_weapon == "fire":
+		get_tree().call_group("interface", "set_weapon_ammo", projectile_amount, projectile_max_amount)
