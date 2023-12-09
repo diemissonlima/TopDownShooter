@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/environments/base_effect.gd"
 }, {
+"base": "Node2D",
+"class": "GameLevel",
+"language": "GDScript",
+"path": "res://scripts/management/game_level.gd"
+}, {
 "base": "BaseProjectile",
 "class": "Grenade",
 "language": "GDScript",
@@ -53,6 +58,7 @@ _global_script_class_icons={
 "AttackState": "",
 "BaseProjectile": "",
 "Effect": "",
+"GameLevel": "",
 "Grenade": "",
 "Interface": "",
 "MoveState": "",
