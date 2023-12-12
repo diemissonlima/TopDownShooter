@@ -67,3 +67,8 @@ func on_screen_entered() -> void:
 
 func on_screen_exited() -> void:
 	visible = false
+
+
+func kill() -> void:
+	queue_free()
+	

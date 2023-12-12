@@ -5,6 +5,7 @@
 [ext_resource path="res://scripts/player/soldier.gd" type="Script" id=3]
 [ext_resource path="res://scripts/player/soldier_texture.gd" type="Script" id=4]
 [ext_resource path="res://scripts/player/attack.gd" type="Script" id=5]
+[ext_resource path="res://scenes/combat/hitbox_area.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 5, 5 )
@@ -165,9 +166,6 @@ tracks/0/keys = {
 "values": [ 5, 6 ]
 }
 
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 5, 5 )
-
 [node name="Soldier" type="KinematicBody2D"]
 script = ExtResource( 3 )
 
@@ -192,11 +190,7 @@ anims/idle = SubResource( 4 )
 anims/throw = SubResource( 7 )
 anims/walk = SubResource( 5 )
 
-[node name="HitboxArea" type="Area2D" parent="."]
-visible = false
-
-[node name="Collision" type="CollisionShape2D" parent="HitboxArea"]
-shape = SubResource( 9 )
+[node name="HitboxArea" parent="." instance=ExtResource( 6 )]
 
 [node name="ProjectileSpawner" type="Position2D" parent="."]
 
