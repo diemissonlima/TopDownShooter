@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/combat/health_bar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/enemies/enemy.gd" type="Script" id=2]
 
-[node name="Enemy" type="KinematicBody2D"]
+[node name="Enemy" type="KinematicBody2D" groups=["enemy"]]
+script = ExtResource( 2 )
 
 [node name="Texture" type="Sprite" parent="."]
 
@@ -15,3 +17,8 @@
 [node name="Notifier" type="VisibilityNotifier2D" parent="."]
 
 [node name="MonitoringTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="screen_entered" from="Notifier" to="." method="on_screen_entered"]
+[connection signal="screen_exited" from="Notifier" to="." method="on_screen_exited"]
+[connection signal="timeout" from="MonitoringTimer" to="." method="on_monitoring_timer_timeout"]
