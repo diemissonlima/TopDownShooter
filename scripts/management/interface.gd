@@ -10,3 +10,8 @@ func set_weapon_text(weapon: String) -> void:
 	
 func set_weapon_ammo(current_ammo: int, max_ammo: int) -> void:
 	ammo.text = "Ammo: " + str(current_ammo) + "/" + str(max_ammo)
+
+
+func reload_game() -> void:
+	var _reload: bool = get_tree().change_scene("res://scenes/management/game_level.tscn")
+	

@@ -63,5 +63,5 @@ func on_animation_finished(anim_name:String) -> void:
 		parent.set_physics_process(true)
 		
 	if anim_name == "death":
-		get_tree().paused = true
+		get_tree().call_group("interface", "reload_game")
 	

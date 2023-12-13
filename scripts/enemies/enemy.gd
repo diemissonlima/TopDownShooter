@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name Enemy
 
+onready var animation: AnimationPlayer = get_node("Animation")
+
 onready var texture: Sprite = get_node("Texture")
 onready var collision_shape: CollisionShape2D = get_node("Collision")
 onready var monitoring_timer: Timer = get_node("MonitoringTimer")
@@ -16,6 +18,11 @@ var itens_dict: Dictionary = {
 	"Grenade Ammo": [
 		[41, 60],
 		preload("res://scenes/player/ammo/grenade_ammo.tscn")
+	],
+	
+	"Health": [
+		[41, 60],
+		preload("res://scenes/combat/health.tscn")
 	]
 }
 
@@ -41,12 +48,13 @@ func get_player(player_reference, navigation: Navigation2D) -> void:
 		
 		
 func _physics_process(_delta: float) -> void:
+	animate()
 	if distance < distance_treshold:
 		return
 		
 	velocity = move_and_slide(velocity)
 	verify_direction()
-	animate()
+	
 
 func verify_direction() -> void:
 	if velocity.x > 0:
@@ -57,7 +65,11 @@ func verify_direction() -> void:
 	
 	
 func animate() -> void:
-	pass
+	if velocity != Vector2.ZERO:
+		animation.play("walk")
+		return
+		
+	animation.stop()
 	
 	
 func set_collision() -> void:
