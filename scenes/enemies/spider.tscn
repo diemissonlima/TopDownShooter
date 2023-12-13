@@ -76,7 +76,7 @@ extents = Vector2( 7.5, 7.5 )
 
 [node name="Spider" instance=ExtResource( 2 )]
 attack_cooldown = 3.0
-damage = 4
+damage = 3
 move_speed = 20
 distance_treshold = 5
 
@@ -102,7 +102,7 @@ anims/walk = SubResource( 2 )
 [node name="HitboxArea" parent="." index="6"]
 position = Vector2( 0, -1 )
 script = SubResource( 10 )
-health = 10
+health = 8
 
 [node name="Collision" type="CollisionShape2D" parent="HitboxArea" index="0"]
 position = Vector2( 0.5, 0.5 )

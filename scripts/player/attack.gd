@@ -12,6 +12,9 @@ var weapons_list: Array = [
 	"fire", "throw"
 ]
 
+var fire: int # tiros disparados
+var throw: int # granadas lancadas
+
 var weapon_index: int = 0
 var grenade_amount: int = 5
 var max_grenade_amount: int = 5
@@ -37,8 +40,17 @@ func attack() -> void:
 		
 	if Input.is_action_just_pressed("attack") and not soldier.is_attacking:
 		soldier.is_attacking = true
+		
 		update_ammo(weapons_list[weapon_index], "decrease", 1)
 		texture.action_behavior(weapons_list[weapon_index])
+		
+		if weapons_list[weapon_index] == "fire":
+			fire += 1
+			get_tree().call_group("interface", "shots_fired", fire, "fire")
+			
+		if weapons_list[weapon_index] == "throw":
+			throw += 1
+			get_tree().call_group("interface", "shots_fired", throw, "throw")
 		
 	
 func can_shoot(type: String) -> bool:
@@ -87,7 +99,7 @@ func spawn_projectile(type: String) -> void:
 			
 		"throw":
 			projectile = GRENADE.instance()
-			
+
 	get_tree().root.call_deferred("add_child", projectile)
 	projectile.global_position = projectile_spawner.global_position
 	# conectar o sinal de camera shake
@@ -126,3 +138,4 @@ func set_text(current_weapon: String) -> void:
 		
 	if current_weapon == "fire":
 		get_tree().call_group("interface", "set_weapon_ammo", projectile_amount, projectile_max_amount)
+	

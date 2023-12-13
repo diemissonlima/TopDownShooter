@@ -11,12 +11,12 @@ var distance: float
 
 var itens_dict: Dictionary = {
 	"MW Ammo": [
-		[1, 40],
+		[1, 50],
 		preload("res://scenes/player/ammo/main_weapon_ammo.tscn")
 	],
 	
 	"Grenade Ammo": [
-		[41, 60],
+		[51, 80],
 		preload("res://scenes/player/ammo/grenade_ammo.tscn")
 	],
 	
@@ -25,6 +25,8 @@ var itens_dict: Dictionary = {
 		preload("res://scenes/combat/health.tscn")
 	]
 }
+
+var inimigo_derrotado: int = 1
 
 var path: Array = []
 var velocity: Vector2
@@ -48,9 +50,11 @@ func get_player(player_reference, navigation: Navigation2D) -> void:
 		
 		
 func _physics_process(_delta: float) -> void:
-	animate()
 	if distance < distance_treshold:
+		animation.stop()
 		return
+	else:
+		animation.play("walk")
 		
 	velocity = move_and_slide(velocity)
 	verify_direction()
@@ -64,12 +68,12 @@ func verify_direction() -> void:
 		texture.flip_h = true
 	
 	
-func animate() -> void:
-	if velocity != Vector2.ZERO:
-		animation.play("walk")
-		return
-		
-	animation.stop()
+#func animate() -> void:
+#	if velocity == Vector2.ZERO:
+#		animation.stop()
+#		return
+#		
+#	animation.play("walk")
 	
 	
 func set_collision() -> void:
@@ -94,6 +98,7 @@ func on_screen_exited() -> void:
 
 
 func kill() -> void:
+	send_enemy_defeated(inimigo_derrotado)
 	roll_dice()
 	queue_free()
 	
@@ -117,3 +122,8 @@ func spawn_item(item_to_spawn) -> void:
 	var item = item_to_spawn.instance()
 	get_tree().root.call_deferred("add_child", item)
 	item.global_position = global_position
+
+
+func send_enemy_defeated(enemy: int) -> void:
+	get_tree().call_group("interface", "set_enemies_defeated", enemy)
+	
