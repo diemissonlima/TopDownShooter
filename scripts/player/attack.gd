@@ -73,6 +73,9 @@ func verify_ammo_amount(weapon_type: String) -> void:
 		
 	if weapon_type == "fire" and projectile_amount > projectile_max_amount:
 		projectile_amount = projectile_max_amount
+		
+	if weapon_type == weapons_list[weapon_index]:
+		set_text(weapon_type)
 
 
 func spawn_projectile(type: String) -> void:

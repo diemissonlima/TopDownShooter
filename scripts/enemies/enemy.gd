@@ -7,6 +7,18 @@ onready var monitoring_timer: Timer = get_node("MonitoringTimer")
 
 var distance: float
 
+var itens_dict: Dictionary = {
+	"MW Ammo": [
+		[1, 40],
+		preload("res://scenes/player/ammo/main_weapon_ammo.tscn")
+	],
+	
+	"Grenade Ammo": [
+		[41, 60],
+		preload("res://scenes/player/ammo/grenade_ammo.tscn")
+	]
+}
+
 var path: Array = []
 var velocity: Vector2
 
@@ -70,5 +82,26 @@ func on_screen_exited() -> void:
 
 
 func kill() -> void:
+	roll_dice()
 	queue_free()
 	
+
+func roll_dice() -> void:
+	for item in itens_dict.keys():
+		get_item(item)
+		
+		
+func get_item(item_key: String) -> void:
+	var random_number: int = randi() % 100 + 1
+	var drop_probability_list: Array = itens_dict[item_key][0]
+	
+	var min_number: int = drop_probability_list[0]
+	var max_number: int = drop_probability_list[1]
+	if random_number >= min_number and random_number <= max_number:
+		spawn_item(itens_dict[item_key][1])
+		
+		
+func spawn_item(item_to_spawn) -> void:
+	var item = item_to_spawn.instance()
+	get_tree().root.call_deferred("add_child", item)
+	item.global_position = global_position

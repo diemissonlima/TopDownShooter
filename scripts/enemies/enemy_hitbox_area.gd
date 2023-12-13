@@ -15,7 +15,7 @@ func on_hitbox_area_entered(area) -> void:
 	update_health(area.damage, "")
 	
 	
-func update_health(damage: int, type: String) -> void:
+func update_health(damage: int, _type: String) -> void:
 	health -= damage
 	health_bar.update_value(health)
 	if health <= 0:

@@ -24,6 +24,7 @@ script = ExtResource( 2 )
 one_shot = true
 
 [node name="HitboxArea" parent="." instance=ExtResource( 3 )]
+visible = true
 collision_layer = 0
 collision_mask = 2
 script = ExtResource( 4 )
