@@ -1,0 +1,152 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/fonts/Kaph-Italic.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/management/game_over.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/Capture it.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 5
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 5
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 5
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 5
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 5
+font_data = ExtResource( 3 )
+
+[node name="TelaGameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="GameOver" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -43.0
+margin_top = 10.0
+margin_right = 43.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 1 )
+text = "Game Over"
+
+[node name="Estatistica" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -35.0
+margin_top = 29.0
+margin_right = 35.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 2 )
+text = "Estatísticas"
+
+[node name="TirosDisparados" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -30.5
+margin_top = 46.0
+margin_right = 30.5
+margin_bottom = 53.0
+custom_fonts/font = SubResource( 3 )
+text = "Tiros Disparados"
+
+[node name="Label" type="Label" parent="TirosDisparados"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -5.5
+margin_top = 4.5
+margin_right = 5.5
+margin_bottom = 11.5
+custom_fonts/font = SubResource( 4 )
+text = "150"
+
+[node name="Granadas Lancadas" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -33.5
+margin_top = 64.0
+margin_right = 33.5
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 3 )
+text = "Granadas Lançadas"
+
+[node name="Label" type="Label" parent="Granadas Lancadas"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -5.5
+margin_top = 4.5
+margin_right = 5.5
+margin_bottom = 11.5
+custom_fonts/font = SubResource( 5 )
+text = "150"
+
+[node name="InimigosMortos" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -36.5
+margin_top = 83.0
+margin_right = 36.5
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 3 )
+text = "Inimigos Derrotados"
+
+[node name="Label" type="Label" parent="InimigosMortos"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -5.5
+margin_top = 4.5
+margin_right = 5.5
+margin_bottom = 11.5
+custom_fonts/font = SubResource( 5 )
+text = "150"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -35.0
+margin_top = -27.0
+margin_right = 31.0
+
+[node name="NewGame" type="Button" parent="HBoxContainer"]
+margin_right = 39.0
+margin_bottom = 27.0
+focus_mode = 0
+custom_fonts/font = SubResource( 6 )
+enabled_focus_mode = 0
+text = "New Game"
+flat = true
+
+[node name="Sair" type="Button" parent="HBoxContainer"]
+margin_left = 43.0
+margin_right = 66.0
+margin_bottom = 27.0
+focus_mode = 0
+custom_fonts/font = SubResource( 7 )
+enabled_focus_mode = 0
+text = "sair"
+flat = true

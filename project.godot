@@ -79,6 +79,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/player/move.gd"
 }, {
+"base": "Control",
+"class": "ScreenGameover",
+"language": "GDScript",
+"path": "res://scripts/management/game_over.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Soldier",
 "language": "GDScript",
@@ -88,6 +93,11 @@ _global_script_classes=[ {
 "class": "SoldierTexture",
 "language": "GDScript",
 "path": "res://scripts/player/soldier_texture.gd"
+}, {
+"base": "Node2D",
+"class": "Statistics",
+"language": "GDScript",
+"path": "res://scripts/management/statistics.gd"
 } ]
 _global_script_class_icons={
 "Ammo": "",
@@ -104,8 +114,10 @@ _global_script_class_icons={
 "Interface": "",
 "LayeredObjects": "",
 "MoveState": "",
+"ScreenGameover": "",
 "Soldier": "",
-"SoldierTexture": ""
+"SoldierTexture": "",
+"Statistics": ""
 }
 
 [application]
@@ -113,6 +125,10 @@ _global_script_class_icons={
 config/name="TopDownShooter"
 run/main_scene="res://scenes/management/game_level.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+statistics="*res://scripts/management/statistics.gd"
 
 [display]
 

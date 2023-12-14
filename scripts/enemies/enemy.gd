@@ -68,14 +68,6 @@ func verify_direction() -> void:
 		texture.flip_h = true
 	
 	
-#func animate() -> void:
-#	if velocity == Vector2.ZERO:
-#		animation.stop()
-#		return
-#		
-#	animation.play("walk")
-	
-	
 func set_collision() -> void:
 	change_monitoring_state(true)
 	monitoring_timer.start(attack_cooldown)

@@ -49,27 +49,3 @@ custom_constants/shadow_offset_x = 1
 custom_fonts/font = SubResource( 1 )
 text = "Inimigos Derrotados: "
 valign = 1
-
-[node name="TirosDisparados" type="Label" parent="."]
-margin_left = 5.0
-margin_top = 20.0
-margin_right = 43.0
-margin_bottom = 25.0
-custom_colors/font_color = Color( 0.913725, 1, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 1
-custom_fonts/font = SubResource( 1 )
-text = "Tiros Disparados: "
-valign = 1
-
-[node name="GranadasLancadas" type="Label" parent="."]
-margin_left = 5.0
-margin_top = 26.0
-margin_right = 52.0
-margin_bottom = 31.0
-custom_colors/font_color = Color( 0.913725, 1, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 1
-custom_fonts/font = SubResource( 1 )
-text = "Granadas Lançadas: "
-valign = 1

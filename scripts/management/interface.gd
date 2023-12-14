@@ -4,8 +4,8 @@ class_name Interface
 onready var current_weapon: Label = get_node("CurrentWeapon")
 onready var ammo: Label = get_node("Ammo")
 onready var enemies: Label = get_node("Enemies")
-onready var fire: Label = get_node("TirosDisparados")
-onready var throw: Label = get_node("GranadasLancadas")
+#onready var fire: Label = get_node("TirosDisparados")
+#onready var throw: Label = get_node("GranadasLancadas")
 
 var inimigos_derrotados: int
 var tiros_disparados: int
@@ -21,6 +21,7 @@ func set_weapon_ammo(current_ammo: int, max_ammo: int) -> void:
 	
 func set_enemies_defeated(value: int) -> void:
 	inimigos_derrotados += value
+	statistics.inimigos_derrotados = inimigos_derrotados
 	enemies.text = "Inimigos Derrotados: " + str(inimigos_derrotados)
 	
 
@@ -28,13 +29,15 @@ func shots_fired(value: int, type: String) -> void:
 	match type:
 		"fire":
 			tiros_disparados = value
-			fire.text = "Tiros Disparados: " + str(tiros_disparados)
+			statistics.tiros_disprados = tiros_disparados
+			#fire.text = "Tiros Disparados: " + str(tiros_disparados)
 	
 		"throw":
 			granadas_lancadas = value
-			throw.text = "Granadas Lançadas: " + str(granadas_lancadas)
+			statistics.granadas_lancadas = granadas_lancadas
+			#throw.text = "Granadas Lançadas: " + str(granadas_lancadas)
 			
 
 func reload_game() -> void:
-	var _reload: bool = get_tree().change_scene("res://scenes/management/game_level.tscn")
+	var _reload: bool = get_tree().change_scene("res://scenes/management/game_over.tscn")
 	
