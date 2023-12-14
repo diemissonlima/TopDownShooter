@@ -88,20 +88,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 20, 21, 22 ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ false ],
-"method": "set_physics_process"
-} ]
-}
 
 [sub_resource type="Animation" id=4]
 resource_name = "idle"
@@ -167,7 +153,7 @@ tracks/0/keys = {
 "values": [ 5, 6 ]
 }
 
-[node name="Soldier" type="KinematicBody2D"]
+[node name="Soldier" type="KinematicBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource( 3 )
 

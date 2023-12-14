@@ -33,6 +33,7 @@ var velocity: Vector2
 
 export(float) var attack_cooldown
 
+export(int) var xp
 export(int) var points
 export(int) var damage
 export(int) var move_speed
@@ -92,6 +93,7 @@ func on_screen_exited() -> void:
 
 func kill() -> void:
 	send_enemy_defeated(inimigo_derrotado)
+	get_tree().call_group("player", "update_exp", xp)
 	statistics.pontuacao += points
 	roll_dice()
 	queue_free()

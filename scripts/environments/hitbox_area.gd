@@ -1,8 +1,8 @@
 extends Area2D
 class_name HitboxArea
 
-var on_hit: bool = false
-var on_death: bool = false
+#var on_hit: bool = false
+#var on_death: bool = false
 
 var max_health_value: int
 

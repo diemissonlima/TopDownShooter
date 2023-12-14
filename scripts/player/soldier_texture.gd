@@ -41,17 +41,16 @@ func action_behavior(state: String) -> void:
 
 func move_behavior(velocity: Vector2) -> void:
 	if velocity != Vector2.ZERO:
-		animation.play(get_move_state())
-		return
-		
-	animation.play("idle")
+		animation.play("walk")
+	else:
+		animation.play("idle")
 	
 
-func get_move_state() -> String:
-	if parent.is_crawling:
-		return "crawl"
-		
-	return "walk"
+#func get_move_state() -> String:
+#	if parent.is_crawling:
+#		return "crawl"
+#		
+#	return "walk"
 	
 
 func on_animation_finished(anim_name:String) -> void:
@@ -59,8 +58,8 @@ func on_animation_finished(anim_name:String) -> void:
 	if anim_name == "fire" or anim_name == "throw":
 		parent.is_attacking = false
 		
-	if anim_name == "hit":
-		parent.set_physics_process(true)
+	#if anim_name == "hit":
+		#parent.set_physics_process(true)
 		
 	if anim_name == "death":
 		get_tree().call_group("interface", "reload_game")

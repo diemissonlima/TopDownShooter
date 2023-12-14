@@ -132,9 +132,9 @@ text = "150"
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -36.5
-margin_top = 90.0
+margin_top = 89.0
 margin_right = 36.5
-margin_bottom = 97.0
+margin_bottom = 96.0
 custom_fonts/font = SubResource( 3 )
 text = "Inimigos Derrotados"
 
@@ -160,12 +160,8 @@ margin_top = -27.0
 margin_right = 31.0
 
 [node name="NewGame" type="Button" parent="HBoxContainer"]
-anchor_left = -0.0285714
-anchor_top = 0.259259
-anchor_right = -0.0285714
-anchor_bottom = 0.259259
 margin_right = 43.0
-margin_bottom = 11.0
+margin_bottom = 27.0
 focus_mode = 0
 custom_fonts/font = SubResource( 6 )
 enabled_focus_mode = 0
@@ -173,13 +169,9 @@ text = "Novo Jogo"
 flat = true
 
 [node name="Sair" type="Button" parent="HBoxContainer"]
-anchor_left = -0.0285714
-anchor_top = 0.259259
-anchor_right = -0.0285714
-anchor_bottom = 0.259259
 margin_left = 47.0
 margin_right = 70.0
-margin_bottom = 11.0
+margin_bottom = 27.0
 focus_mode = 0
 custom_fonts/font = SubResource( 7 )
 enabled_focus_mode = 0

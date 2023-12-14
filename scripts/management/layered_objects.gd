@@ -7,7 +7,7 @@ onready var parent: Node2D = get_parent()
 onready var timer: Timer = get_node("Timer")
 
 var avaliable_cells: Array = []
-var spawn_cooldown: float = 2
+var spawn_cooldown: float = 3.5
 
 export(Array, PackedScene) var enemies_list
 

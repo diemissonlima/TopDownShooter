@@ -40,6 +40,7 @@ tracks/0/keys = {
 
 [node name="Centipede" instance=ExtResource( 2 )]
 attack_cooldown = 3.0
+xp = 3
 points = 3
 damage = 4
 move_speed = 25

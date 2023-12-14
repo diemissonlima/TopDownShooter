@@ -19,6 +19,7 @@ func set_statistics() -> void:
 
 func on_NewGame_pressed():
 	var _new_game: bool = get_tree().change_scene("res://scenes/management/game_level.tscn")
+	
 	reset()
 
 
