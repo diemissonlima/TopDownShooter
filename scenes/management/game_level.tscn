@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://scenes/player/assault.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/management/interface.tscn" type="PackedScene" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://scenes/enemies/spider.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/management/layered_objects.gd" type="Script" id=7]
 [ext_resource path="res://scenes/management/light.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/enemies/wasp.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/enemies/centipede.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/enemies/hornet.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/enemies/scarab.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -740,7 +744,7 @@ tile_data = PoolIntArray( 0, 0, 2, 1, 0, 131074, 2, 0, 131074, 3, 0, 131074, 4, 
 
 [node name="LayeredObjects" type="YSort" parent="."]
 script = ExtResource( 7 )
-enemies_list = [ ExtResource( 6 ) ]
+enemies_list = [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ]
 
 [node name="Assault" parent="LayeredObjects" instance=ExtResource( 1 )]
 position = Vector2( 92, 54 )
