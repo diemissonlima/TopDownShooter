@@ -4,8 +4,6 @@ class_name Interface
 onready var current_weapon: Label = get_node("CurrentWeapon")
 onready var ammo: Label = get_node("Ammo")
 onready var enemies: Label = get_node("Enemies")
-#onready var fire: Label = get_node("TirosDisparados")
-#onready var throw: Label = get_node("GranadasLancadas")
 
 var inimigos_derrotados: int
 var tiros_disparados: int
@@ -30,12 +28,10 @@ func shots_fired(value: int, type: String) -> void:
 		"fire":
 			tiros_disparados = value
 			statistics.tiros_disprados = tiros_disparados
-			#fire.text = "Tiros Disparados: " + str(tiros_disparados)
 	
 		"throw":
 			granadas_lancadas = value
 			statistics.granadas_lancadas = granadas_lancadas
-			#throw.text = "Granadas Lançadas: " + str(granadas_lancadas)
 			
 
 func reload_game() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://scenes/player/assault.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/management/interface.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scripts/management/game_level.gd" type="Script" id=5]
 [ext_resource path="res://scenes/enemies/spider.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/management/layered_objects.gd" type="Script" id=7]
+[ext_resource path="res://scenes/management/light.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -712,6 +713,11 @@ points = PoolVector2Array( 8, 4, 24, 4, 24, 24, 8, 24 )
 } ]
 10/z_index = 0
 
+[sub_resource type="Environment" id=52]
+background_mode = 4
+glow_enabled = true
+glow_hdr_threshold = 1.5
+
 [node name="GameLevel" type="Node2D"]
 script = ExtResource( 5 )
 
@@ -748,11 +754,54 @@ cell_y_sort = true
 centered_textures = true
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 65549, 9, 0, 65572, 0, 0, 196616, 0, 0, 196629, 1, 0, 262172, 5, 0, 262177, 4, 0, 327694, 4, 0, 393234, 6, 0, 458789, 2, 0, 524290, 2, 0, 524317, 1, 0, 589830, 3, 0, 589845, 0, 0, 589857, 10, 0, 655370, 1, 0, 655378, 6, 0, 786435, 10, 0, 786469, 7, 0, 851996, 4, 0, 917510, 0, 0, 917518, 4, 0, 1048578, 2, 0, 1048613, 0, 0, 1114133, 1, 0, 1114145, 2, 0, 1179654, 5, 0 )
+tile_data = PoolIntArray( 65547, 0, 0, 65549, 9, 0, 65560, 0, 0, 65572, 0, 0, 196610, 0, 0, 196629, 1, 0, 262172, 5, 0, 262177, 4, 0, 327694, 4, 0, 393234, 6, 0, 393249, 0, 0, 458789, 2, 0, 524290, 2, 0, 524317, 1, 0, 589830, 3, 0, 589846, 0, 0, 589857, 10, 0, 589864, 0, 0, 655370, 1, 0, 655378, 6, 0, 786435, 10, 0, 786469, 7, 0, 851996, 4, 0, 917510, 0, 0, 917518, 4, 0, 1048578, 2, 0, 1048613, 0, 0, 1114133, 1, 0, 1114145, 2, 0, 1179654, 5, 0, 1179661, 0, 0, 1179672, 0, 0 )
 
 [node name="Timer" type="Timer" parent="LayeredObjects"]
 wait_time = 1.5
 one_shot = true
 autostart = true
+
+[node name="PostProcessing" type="Node2D" parent="."]
+
+[node name="Mask" type="CanvasModulate" parent="PostProcessing"]
+color = Color( 0.317647, 0.317647, 0.317647, 1 )
+
+[node name="Environment" type="WorldEnvironment" parent="PostProcessing"]
+environment = SubResource( 52 )
+
+[node name="LightSpot" type="Node2D" parent="."]
+
+[node name="LightSpot" parent="LightSpot" instance=ExtResource( 8 )]
+position = Vector2( 40, 48 )
+
+[node name="LightSpot2" parent="LightSpot" instance=ExtResource( 8 )]
+position = Vector2( 104, 224 )
+
+[node name="LightSpot3" parent="LightSpot" instance=ExtResource( 8 )]
+position = Vector2( 216, 288 )
+
+[node name="LightSpot4" parent="LightSpot" instance=ExtResource( 8 )]
+position = Vector2( 392, 288 )
+
+[node name="LightSpot5" parent="LightSpot" instance=ExtResource( 8 )]
+position = Vector2( 600, 256 )
+
+[node name="LightSpot6" parent="LightSpot" instance=ExtResource( 8 )]
+position = Vector2( 648, 144 )
+
+[node name="LightSpot7" parent="LightSpot" instance=ExtResource( 8 )]
+position = Vector2( 536, 96 )
+
+[node name="LightSpot8" parent="LightSpot" instance=ExtResource( 8 )]
+position = Vector2( 584, 16 )
+
+[node name="LightSpot9" parent="LightSpot" instance=ExtResource( 8 )]
+position = Vector2( 392, 16 )
+
+[node name="LightSpot10" parent="LightSpot" instance=ExtResource( 8 )]
+position = Vector2( 360, 144 )
+
+[node name="LightSpot11" parent="LightSpot" instance=ExtResource( 8 )]
+position = Vector2( 184, 16 )
 
 [connection signal="timeout" from="LayeredObjects/Timer" to="LayeredObjects" method="on_spawn_timer_timeout"]

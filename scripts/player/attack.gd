@@ -39,6 +39,7 @@ func attack() -> void:
 		return
 		
 	if Input.is_action_just_pressed("attack") and not soldier.is_attacking:
+		camera.shake(.25, .1)
 		soldier.is_attacking = true
 		
 		update_ammo(weapons_list[weapon_index], "decrease", 1)
@@ -102,7 +103,7 @@ func spawn_projectile(type: String) -> void:
 
 	get_tree().root.call_deferred("add_child", projectile)
 	projectile.global_position = projectile_spawner.global_position
-	# conectar o sinal de camera shake
+	projectile.connect("camera_shake", camera, "shake")
 	projectile.direction = projectile_direction
 	
 	

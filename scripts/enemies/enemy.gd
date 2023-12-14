@@ -33,6 +33,7 @@ var velocity: Vector2
 
 export(float) var attack_cooldown
 
+export(int) var points
 export(int) var damage
 export(int) var move_speed
 export(int) var distance_treshold
@@ -91,6 +92,7 @@ func on_screen_exited() -> void:
 
 func kill() -> void:
 	send_enemy_defeated(inimigo_derrotado)
+	statistics.pontuacao += points
 	roll_dice()
 	queue_free()
 	
