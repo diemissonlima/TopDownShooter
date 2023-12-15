@@ -46,13 +46,6 @@ func move_behavior(velocity: Vector2) -> void:
 		animation.play("idle")
 	
 
-#func get_move_state() -> String:
-#	if parent.is_crawling:
-#		return "crawl"
-#		
-#	return "walk"
-	
-
 func on_animation_finished(anim_name:String) -> void:
 	on_action = false
 	if anim_name == "fire" or anim_name == "throw":

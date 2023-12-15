@@ -51,6 +51,7 @@ position = Vector2( 0.5, 0 )
 anims/fire = SubResource( 1 )
 
 [node name="HitboxArea" parent="." index="3"]
+visible = true
 health = 15
 
 [node name="Collision" type="CollisionShape2D" parent="HitboxArea" index="0"]

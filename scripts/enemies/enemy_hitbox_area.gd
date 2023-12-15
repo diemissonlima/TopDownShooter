@@ -3,10 +3,8 @@ class_name EnemyHitbox
 
 const DEATH_EFFECT: PackedScene = preload("res://scenes/effects/death_effect.tscn")
 
-var inimigos_derrotados: int
-
 func on_hitbox_area_body_entered(_body) -> void:
-	pass
+	return
 
 
 func on_hitbox_area_entered(area) -> void:

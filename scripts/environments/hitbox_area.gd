@@ -1,9 +1,6 @@
 extends Area2D
 class_name HitboxArea
 
-#var on_hit: bool = false
-#var on_death: bool = false
-
 var max_health_value: int
 
 export(int) var health
@@ -17,7 +14,7 @@ func _ready() -> void:
 	
 
 func on_hitbox_area_entered(_area) -> void:
-	pass
+	return
 
 
 func on_hitbox_area_body_entered(body) -> void:
