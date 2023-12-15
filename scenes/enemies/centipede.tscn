@@ -42,11 +42,11 @@ tracks/0/keys = {
 extents = Vector2( 6, 5.5 )
 
 [node name="Centipede" instance=ExtResource( 2 )]
-attack_cooldown = 3.0
+attack_cooldown = 2.0
 xp = 3
-points = 3
+points = 25
 damage = 4
-move_speed = 25
+move_speed = 10
 distance_treshold = 5
 
 [node name="Texture" parent="." index="0"]
@@ -65,12 +65,7 @@ anims/walk = SubResource( 3 )
 
 [node name="HitboxArea" parent="." index="6"]
 health = 10
-texture = NodePath("../Texture")
-health_bar = NodePath("../HealthBar")
 
 [node name="Collision" type="CollisionShape2D" parent="HitboxArea" index="0"]
 position = Vector2( 1, 0.5 )
 shape = SubResource( 9 )
-
-[connection signal="area_entered" from="HitboxArea" to="HitboxArea" method="on_hitbox_area_entered"]
-[connection signal="body_entered" from="HitboxArea" to="HitboxArea" method="on_hitbox_area_body_entered"]

@@ -77,9 +77,9 @@ extents = Vector2( 6, 5.5 )
 [node name="Spider" instance=ExtResource( 2 )]
 attack_cooldown = 3.0
 xp = 2
-points = 2
+points = 15
 damage = 3
-move_speed = 20
+move_speed = 10
 distance_treshold = 5
 
 [node name="Texture" parent="." index="0"]
@@ -89,6 +89,7 @@ vframes = 5
 frame = 5
 
 [node name="Collision" parent="." index="1"]
+visible = false
 position = Vector2( 0.5, -0.5 )
 shape = SubResource( 3 )
 
@@ -101,16 +102,14 @@ autoplay = "walk"
 anims/RESET = SubResource( 1 )
 anims/walk = SubResource( 2 )
 
+[node name="Notifier" parent="." index="4"]
+visible = false
+
 [node name="HitboxArea" parent="." index="6"]
 position = Vector2( 0, -1 )
 script = SubResource( 10 )
 health = 8
-texture = NodePath("../Texture")
-health_bar = NodePath("../HealthBar")
 
 [node name="Collision" type="CollisionShape2D" parent="HitboxArea" index="0"]
 position = Vector2( 0.5, 0.5 )
 shape = SubResource( 9 )
-
-[connection signal="area_entered" from="HitboxArea" to="HitboxArea" method="on_hitbox_area_entered"]
-[connection signal="body_entered" from="HitboxArea" to="HitboxArea" method="on_hitbox_area_body_entered"]

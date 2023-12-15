@@ -44,9 +44,9 @@ extents = Vector2( 6, 5.5 )
 [node name="Scarab" instance=ExtResource( 1 )]
 attack_cooldown = 4.0
 xp = 2
-points = 2
+points = 15
 damage = 3
-move_speed = 20
+move_speed = 15
 distance_treshold = 5
 
 [node name="Texture" parent="." index="0"]
@@ -66,12 +66,7 @@ anims/walk = SubResource( 11 )
 
 [node name="HitboxArea" parent="." index="6"]
 health = 6
-texture = NodePath("../Texture")
-health_bar = NodePath("../HealthBar")
 
 [node name="Collision" type="CollisionShape2D" parent="HitboxArea" index="0"]
 position = Vector2( 1, 0 )
 shape = SubResource( 9 )
-
-[connection signal="area_entered" from="HitboxArea" to="HitboxArea" method="on_hitbox_area_entered"]
-[connection signal="body_entered" from="HitboxArea" to="HitboxArea" method="on_hitbox_area_body_entered"]

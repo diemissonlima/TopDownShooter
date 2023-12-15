@@ -36,8 +36,9 @@ func update_exp(value: int) -> void:
 	elif current_exp >= level_dict[str(level)] and level == 9:
 		current_exp = level_dict[str(level)]
 		
-	statistics.nivel = level
-	statistics.experiencia = current_exp
+	get_tree().call_group("interface", "set_experience", level, "level")
+	get_tree().call_group("interface", "set_experience", current_exp, "xp")
+	get_tree().call_group("interface", "set_experience", level_dict[str(level)], "xp_amount")
 	
 	
 func on_level_up() -> void:

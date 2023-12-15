@@ -51,8 +51,8 @@ func on_animation_finished(anim_name:String) -> void:
 	if anim_name == "fire" or anim_name == "throw":
 		parent.is_attacking = false
 		
-	#if anim_name == "hit":
-		#parent.set_physics_process(true)
+	if anim_name == "hit":
+		parent.set_physics_process(true)
 		
 	if anim_name == "death":
 		get_tree().call_group("interface", "reload_game")

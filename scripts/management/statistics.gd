@@ -9,3 +9,5 @@ var tiros_disprados: int
 var granadas_lancadas: int
 var pontuacao: int
 
+#func _process(_delta):
+#	print(experiencia)
