@@ -84,7 +84,6 @@ custom_colors/font_color = Color( 0.913725, 1, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_fonts/font = SubResource( 1 )
-text = "0"
 valign = 1
 
 [node name="ExpBar" type="TextureProgress" parent="."]
