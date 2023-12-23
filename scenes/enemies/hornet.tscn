@@ -46,7 +46,7 @@ attack_cooldown = 5.0
 xp = 5
 points = 35
 damage = 5
-move_speed = 20
+move_speed = 30
 distance_treshold = 5
 
 [node name="Texture" parent="." index="0"]

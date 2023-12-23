@@ -16,7 +16,7 @@ var granadas_lancadas: int
 func _ready() -> void:
 	score.text = str("Pontuação: " + str(0))
 	level.text = str("Nível: " + str(1))
-	experience.text = str("Experiência: " + str(0) + "/")
+	experience.text = str("Experiência: " + str(0) + " /" + " 25")
 	
 
 func set_weapon_text(weapon: String) -> void:
@@ -57,5 +57,5 @@ func shots_fired(value: int, type: String) -> void:
 			
 			
 func reload_game() -> void:
-	var _reload: bool = get_tree().change_scene("res://scenes/management/game_over.tscn")
+	var _reload: bool = get_tree().change_scene("res://scenes/management/levels/game_level_1.tscn")
 	
